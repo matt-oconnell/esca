@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>esca SDK</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+</head>
+<body>
+
+    TESTING
+    <p></p>
+    <ul></ul>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+    <script src="lib/esca.js"></script>
+    <script>
+        esca.init()
+            .then(function(payload) {
+                payload.data.forEach(function(point) {
+                    $('ul').append($('<li>').text(point));
+                });
+                $('p').text(payload.name);
+            });
+    </script>
+</body>
+</html>
