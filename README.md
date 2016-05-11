@@ -1,6 +1,6 @@
 # esca Web SDK
 
-A simple javascript SDK that provides users with esca Experience payloads. The SDK is setup to authenticate if user site has been configured through the esca dashboard.
+A simple javascript SDK that provides users with esca Experience payloads. The SDK is set up to authenticate if user site has been configured through the esca dashboard.
 
 # Examples
 
