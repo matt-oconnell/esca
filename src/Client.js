@@ -1,23 +1,33 @@
 const Promise = require('es6-promise').Promise
 const Request = require('browser-request')
+const QS = require('query-string')
 
 const Client = {
 
 	/**
 	 * @param  {String} url Endpoint
+	 * @param  {Object} data Object to send in the body
 	 * @param  {String} method Method GET, POST, PUT or DELETE
-	 * @param  {Object} body Objet to send in the body
 	 * @return {Promise}
 	 */
-  request(url, method = 'GET', body = '{}') {
+	request(url, data = {}, method = 'GET') {
+
+		// Create Query String
+		const params = QS.stringify(data)
+
 		const requestData = {
 			method: method,
 			url: url,
-			body: body,
+			body: data,
 			json: true
 		}
 
-		return this.fetch(requestData)
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.send(params);
+
+		// return this.fetch(requestData)
 	},
 
 	/**

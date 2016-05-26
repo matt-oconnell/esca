@@ -28,8 +28,16 @@ class SDK {
 	 * @return {Promise}
 	 */
 	authenticate() {
-		const url = `${settings.apiURL}?iid=${this.iid}`
-		return Client.request(url)
+		
+		const data = {
+			iid: this.iid,
+			app_key: 'xX00mbCmPqiOmpUM1xxu75yT4Las0F2M7J2fBMsl',
+			app_id: 3,
+			name: 'testy2',
+			url: 'here'
+		}
+
+		return Client.request(settings.apiURL, data, 'POST')
 	}
 
 	/**

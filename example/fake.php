@@ -2,6 +2,8 @@
 
 $iid = $_GET['iid'];
 
+print_r($_GET);die;
+
 $dummy = [
 	'id' => $iid,
 	'name' => 'Test Name',

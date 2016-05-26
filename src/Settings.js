@@ -1,5 +1,5 @@
 const settings = {
-	apiURL: '/esca/example/fake.php'
+	apiURL: 'http://s.b.b/v2/experiences'
 }
 
 export default settings
