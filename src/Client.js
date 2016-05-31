@@ -13,7 +13,7 @@ const Client = {
 	request(url, data = {}, method = 'GET') {
 
 		// Create Query String
-		const params = QS.stringify(data)
+		// const params = QS.stringify(data)
 
 		const requestData = {
 			method: method,
@@ -23,9 +23,11 @@ const Client = {
 		}
 
 		var xhr = new XMLHttpRequest();
-		xhr.open("POST", url, true);
-		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhr.send(params);
+		xhr.open('POST', url, true);
+		xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+		console.log(data);
+		xhr.send(JSON.stringify(data));
+
 
 		// return this.fetch(requestData)
 	},

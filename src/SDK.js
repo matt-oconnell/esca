@@ -28,13 +28,32 @@ class SDK {
 	 * @return {Promise}
 	 */
 	authenticate() {
-		
+
 		const data = {
-			iid: this.iid,
-			app_key: 'xX00mbCmPqiOmpUM1xxu75yT4Las0F2M7J2fBMsl',
 			app_id: 3,
-			name: 'testy2',
-			url: 'here'
+			app_key: "xX00mbCmPqiOmpUM1xxu75yT4Las0F2M7J2fBMsl",
+			name: "Some new name",
+			parameter: "value",
+			slots: [
+				{
+					key: "string",
+					keys: [
+						{
+							key: "key1"
+						},
+						{
+							key: "key2"
+						},
+						{
+							key: "key3"
+						}
+					]
+				},
+				{
+					key: "string2"
+				}
+			],
+			url: "http://matto.xyz"
 		}
 
 		return Client.request(settings.apiURL, data, 'POST')
