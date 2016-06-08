@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>esca SDK</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+</head>
+<body>
+
+    <div class="color"></div>
+    <div class="model"></div>
+    <div class="shoe">
+        <img src="">
+    </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="../lib/esca.js"></script>
+    <script>
+        // Pass in Client Key (you can get this from the dashboard)
+        esca.payload('RD3Rd8Rjwm1RslvEXdvAWZTEI6OynHV7CoLLHL8k')
+        .then(function(payload) {
+            console.log('Success', payload)
+            var pl = payload.payloads['Shoe Details'];
+            $('.color').text(pl.color)
+            $('.model').text(pl.model)
+            $('.shoe img').attr('src', pl.size)
+
+        }, function(error) {
+            console.log('Error', error)
+        });
+    </script>
+</body>
+</html>
