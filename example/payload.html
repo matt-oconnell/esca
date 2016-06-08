@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>esca SDK</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+</head>
+<body>
+
+    <h1>Example: Retrieving a Smart Experience Payload</h1>
+    <p>Check your console.</p>
+
+    <script src="../lib/esca.js"></script>
+    <script>
+        // Pass in Client Key (you can get this from the dashboard)
+        esca.payload('xX00mbCmPqiOmpUM1xxu75yT4Las0F2M7J2fBMsl')
+        .then(function(payload) {
+            console.log('Success', payload)
+        }, function(error) {
+            console.log('Error', error)
+        });
+    </script>
+</body>
+</html>
