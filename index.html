@@ -7,24 +7,20 @@
 </head>
 <body>
 
-    TESTING
-    <h1></h1>
-    <p></p>
-    <ul></ul>
+    <h1>Example: Retrieving a Smart Experience Payload</h1>
+    <p>Check your console.</p>
 
 
     <!-- rk, app_key, to interactions -->
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
     <script src="lib/esca.js"></script>
     <script>
-        esca.payload({
-            key: 'xX00mbCmPqiOmpUM1xxu75yT4Las0F2M7J2fBMsl'
-        })
+        // Pass in Client Key (you can get this from the dashboard)
+        esca.payload('xX00mbCmPqiOmpUM1xxu75yT4Las0F2M7J2fBMsl')
         .then(function(payload) {
-            console.log(payload)
-        }, function(e) {
-            console.log('error', e)
+            console.log('Success', payload)
+        }, function(error) {
+            console.log('Error', error)
         });
     </script>
 </body>

@@ -3,25 +3,7 @@ import settings from './Settings'
 const qs = require('query-string')
 
 class SDK {
-
-	/**
-	 * Constructor
-	 */
-	constructor() {}
-
-	/**
-	 * Get the app payload!
-	 *
-	 * @param  {String} appKey  Client can get this from the dashboard
-	 * @return {Promise}
-	 */
-	payload(appKey) {
-		if(!appKey) {
-			throw new Error('esca SDK requires an app key')
-		}
-		this.authenticate(appKey)
-	}
-
+	
 	/**
 	 * Registers a new experience with the API
 	 * This should only happen once.
@@ -57,12 +39,22 @@ class SDK {
 	}
 
 	/**
-	 * Authenticate with our API
+	 * Get the app payload!
+	 *
+	 * @param  {String} appKey  Client can get this from the dashboard
 	 * @return {Promise}
 	 */
-	authenticate(appKey) {
-		this.rollingKey = SDK.getRollingKey();
+	payload(appKey) {
+		if(!appKey) {
+			throw new Error('esca SDK requires an app key')
+		}
 
+		const data = {
+			rk: SDK.getRollingKey(),
+			app_key: appKey
+		}
+
+		return Client.request(settings.payloadURL, data)
 	}
 
 	/**
