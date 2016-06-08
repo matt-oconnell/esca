@@ -6,7 +6,7 @@ A simple javascript SDK that provides users with esca Experience payloads. The S
 
 Simply include the `esca.js` script and initialize. 
 
-Fetch a payload:
+### Fetch a payload:
 
 ```javascript
 const clientKey = '123' // Retrieve from esca dashboard
@@ -20,7 +20,7 @@ esca.payload(clientKey)
 ```
 
 
-Fetch a payload:
+### Create an experience:
 
 ```javascript
 const clientKey = '123' // Retrieve from esca dashboard
@@ -50,3 +50,17 @@ esca.createExperience({
     // Error
 });
 ```
+
+
+## Full Workflow
+
+Visit lionfish/apps
+Make new app
+Click the rightmost icon for a new JS app
+Save
+Refresh page
+Click on your new app
+Get the app key
+
+Create an experience using this SDK. You need to include the SDK and configure your experience on a web page. Reference the documentation above. Use the app key we just got from the dashboard.
+
