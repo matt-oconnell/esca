@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>esca SDK</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+</head>
+<body>
+
+    <h1>Example: Creating a Smart Experience</h1>
+    <p>Check your console.</p>
+
+    <script src="lib/esca.js"></script>
+    <script>
+        /*
+        This function will continue to post to the API.
+        todo: Screen against multiple postings
+        todo: Simplify required inputs
+        todo: Adjust API for saner error messages
+        */
+        esca.createExperience({
+            appKey: 'SrMHhq0M9ogmZHc18A72SvtzkNJCbOhiORGYd9Jo',
+            name: 'Smart Car',
+            url: 'http://s.box/esca',
+            slots: [{
+                key: "Car Details",
+                keys: [
+                    {
+                        key: "make"
+                    },
+                    {
+                        key: "model"
+                    },
+                    {
+                        key: "color"
+                    }
+                ]
+            }]
+        })
+        .then(function(response) {
+            console.log('Success', response)
+        }, function(error) {
+            console.log('Error', error)
+        });
+    </script>
+</body>
+</html>

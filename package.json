@@ -30,8 +30,6 @@
   "author": "Blue Bite (Matt O'Connell)",
   "license": "MIT",
   "dependencies": {
-    "browser-request": "^0.3.3",
-    "es6-promise": "^3.1.2",
-    "query-string": "^4.1.0"
+    "es6-promise": "^3.1.2"
   }
 }

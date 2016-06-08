@@ -8,19 +8,24 @@
 <body>
 
     TESTING
+    <h1></h1>
     <p></p>
     <ul></ul>
+
+
+    <!-- rk, app_key, to interactions -->
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
     <script src="lib/esca.js"></script>
     <script>
-        esca.init()
-            .then(function(payload) {
-                payload.data.forEach(function(point) {
-                    $('ul').append($('<li>').text(point));
-                });
-                $('p').text(payload.name);
-            });
+        esca.payload({
+            key: 'xX00mbCmPqiOmpUM1xxu75yT4Las0F2M7J2fBMsl'
+        })
+        .then(function(payload) {
+            console.log(payload)
+        }, function(e) {
+            console.log('error', e)
+        });
     </script>
 </body>
 </html>

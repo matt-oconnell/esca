@@ -1,6 +1,4 @@
 const Promise = require('es6-promise').Promise
-const Request = require('browser-request')
-const QS = require('query-string')
 
 const Client = {
 
@@ -10,11 +8,7 @@ const Client = {
 	 * @param  {String} method Method GET, POST, PUT or DELETE
 	 * @return {Promise}
 	 */
-	request(url, data = {}, method = 'GET') {
-
-		// Create Query String
-		// const params = QS.stringify(data)
-
+	request(url, data = {}, method = 'POST') {
 		const requestData = {
 			method: method,
 			url: url,
@@ -22,14 +16,7 @@ const Client = {
 			json: true
 		}
 
-		var xhr = new XMLHttpRequest();
-		xhr.open('POST', url, true);
-		xhr.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
-		console.log(data);
-		xhr.send(JSON.stringify(data));
-
-
-		// return this.fetch(requestData)
+		return this.fetch(requestData)
 	},
 
 	/**
@@ -37,17 +24,26 @@ const Client = {
 	 * @return {Promise}
 	 */
 	fetch(requestData) {
-		return new Promise(function(resolve, reject) {
-			Request(requestData, (er, response) => {
-				if(er) {
-					reject(`Failed: HTTP status was ${response.status}`)
-				} else {
-					resolve(response.body)
+		return new Promise((resolve, reject) => {
+			const {method, url, body} = requestData
+			const xhr = new XMLHttpRequest()
+			const bodyContent = JSON.stringify(body)
+
+			xhr.open(method, url)
+			xhr.setRequestHeader('Content-type', 'application/json')
+			xhr.send(bodyContent)
+			xhr.onload = () => {
+				if(xhr.status == 200) {
+					resolve(JSON.parse(xhr.response))
 				}
-			})
+				else {
+					reject(Error(xhr.statusText))
+				}
+			}
+			
+			xhr.onerror = () => reject(Error('Network Error'))
 		})
 	}
-
 }
 
 export default Client
