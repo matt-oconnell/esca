@@ -8,7 +8,7 @@ const Client = {
 	 * @param  {String} method Method GET, POST, PUT or DELETE
 	 * @return {Promise}
 	 */
-	request(url, data = {}, method = 'POST') {
+	request(url = null, data = {}, method = 'POST') {
 		const requestData = {
 			method: method,
 			url: url,
